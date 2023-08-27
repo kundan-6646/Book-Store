@@ -2,15 +2,14 @@ import { useState } from "react";
 import BookDetail from "./BookDetail";
 import MoreBooks from "./MoreBooks";
 
-let BookList = ({harryPotterBooks, sherlockHolmesBooks, searchResults}) => {
+let BookList = ({searchedTerm, searchResults}) => {
     let [currentlyOpenBook, setCurrentlyOpenBook] = useState({});
 
     return (
         <div className="books-container">
             <BookDetail book={currentlyOpenBook} />
             <MoreBooks openBook={setCurrentlyOpenBook}
-             harryPotterBooks={harryPotterBooks}
-             sherlockHolmesBooks={sherlockHolmesBooks} 
+             searchedTerm={searchedTerm}
              searchResults={searchResults} />
         </div>
     )

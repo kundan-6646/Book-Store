@@ -150,7 +150,7 @@ input {
 .books-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
     gap: 20px;
 }
@@ -159,4 +159,9 @@ input {
     border-radius: 4px;
     margin: 20px 0;
     cursor: pointer;
+}
+
+.highlight {
+    color: #415F71;
+    font-style: italic;
 }

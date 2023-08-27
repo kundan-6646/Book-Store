@@ -1,3 +1,4 @@
+import imageNotFound from '../images/img-not-found.png';
 
 let Book = ({book, openBook}) => {
     function scrollToTop() {
@@ -12,7 +13,7 @@ let Book = ({book, openBook}) => {
             openBook(book);
             scrollToTop();
         }} title="see more">
-            <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
+            <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : imageNotFound} alt={book.volumeInfo.title} />
         </div>
     )
 }

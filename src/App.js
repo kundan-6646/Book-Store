@@ -7,6 +7,7 @@ let App = () => {
     const [harryPotterBooks, setHarryPotterBooks] = useState([]);
     const [sherlockHolmesBooks, setSherlockHolmesBooks] = useState([]);
     const [searchResults, setSearchResults] = useState([]);
+    const [searchedTerm, setSearchedTerm] = useState('Harry Potter and Sherlock Holmes');
 
     //Fetching harry+potter and Sherlock+Holmes
     useEffect(() => {
@@ -36,6 +37,9 @@ let App = () => {
             const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`);
             const data = await response.json();
             setSearchResults(data.items || []);
+            setSearchedTerm(searchTerm);
+            setHarryPotterBooks([]);
+            setSherlockHolmesBooks([]);
           } catch (error) {
             console.error('An error occurred while fetching search results:', error);
           }
@@ -45,9 +49,8 @@ let App = () => {
     return (
         <>
             <NavBar searchBooks={handleSearch} />
-            <BookList harryPotterBooks={harryPotterBooks}
-             sherlockHolmesBooks={sherlockHolmesBooks} 
-             searchResults={searchResults}   
+            <BookList searchedTerm={searchedTerm}
+             searchResults={[...searchResults, ...harryPotterBooks, ...sherlockHolmesBooks]}   
              />
         </>
     )
